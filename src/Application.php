@@ -153,6 +153,13 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             'fields' => [
                 'username' => 'username',
                 'password' => 'password',
+            ],
+
+            'resolver' => [
+                'classname' => 'Authentication.Orm',
+                'finder' => 'all',
+                'userModel' => 'Users',
+                'passwordHasher' => 'Authentication.Default',
             ]
         ]);
 

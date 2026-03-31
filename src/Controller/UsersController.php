@@ -36,6 +36,9 @@ class UsersController extends AppController
     {
         $result = $this->Authentication->getResult();
 
+        debug($result);
+        die();
+
         if ($result->isValid()) {
 
             $redirect = $this->request->getQuery('redirect', ['controller' => 'Recipes', 'action' => 'index']);
