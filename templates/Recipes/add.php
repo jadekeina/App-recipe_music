@@ -43,6 +43,14 @@ echo $this->Form->create($recipe);
 
     <?php
 
+    echo $this->Form->control('spotify_playlist_id',[
+        'label' => 'Lien Spotify (optionnel)',
+        'type' => 'text',
+    ]);
+    ?>
+
+    <?php
+
     echo $this->Form->button('Ajouter la recette');
     ?>
 
