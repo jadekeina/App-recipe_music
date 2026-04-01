@@ -17,6 +17,10 @@ class UsersTable extends Table{
         $this->addBehavior('Timestamp'); 
 
         $this->hasMany('Recipes');
+
+        $this->belongsToMany('Recipes', [
+            'through' => 'Favorites',
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator

@@ -5,7 +5,28 @@ $this->assign('title', h($recipe->title));
 
 <h1><?= h($recipe->title) ?></h1>
 
-<p>Ajoutée par : <?= h($recipe->user->username) ?></p>
+<div class="actions">
+    <?= $this->Form->postLink(
+        'Ajouter/Retirer des favoris',
+        ['controller' => 'Favorites', 'action' => 'toggle', $recipe->id],
+        ['class' => 'button', 'confirm' => 'Modifier vos favoris ?']
+    ) ?>
+</div>
+
+<div class="favorite-section">
+    <?= $this->Form->postLink(
+        $isFavorite ? '❤️ Retirer des favoris' : '🤍 Ajouter aux favoris',
+        ['controller' => 'Favorites', 'action' => 'toggle', $recipe->id],
+        [
+            'class' => 'btn-favorite',
+            // Optionnel : affiche une petite boîte de dialogue de confirmation
+            'confirm' => $isFavorite ? 'Voulez-vous retirer cette recette de vos favoris ?' : null 
+        ]
+    ) ?>
+</div>
+
+
+<p>Ajoutée par : <?= $recipe->has('user') ? h($recipe->user->username) : 'Anonyme' ?></p>
 <p>Durée : <?= h($recipe->duration) ?> minutes</p>
 
 <h2>Ingrédients</h2>

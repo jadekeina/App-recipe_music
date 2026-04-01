@@ -39,9 +39,18 @@ class RecipesController extends AppController
             $playlistId = $spotify->extractPlaylistId($recipe->spotify_playlist_id);
         }
 
+        $isFavorite = false;
+        $identity = $this->Authentication->getIdentity();
+        if ($identity) {
+            $isFavorite = $this->getTableLocator()->get('Favorites')->exists([
+                'user_id' => $identity->get('id'),
+                'recipe_id' => $recipe->id
+            ]);
+        }
+
         // 4. On envoie les variables à la vue
         // 'playlistId' sera soit l'ID propre, soit null.
-        $this->set(compact('recipe', 'playlistId'));
+        $this->set(compact('recipe', 'playlistId', 'isFavorite'));
     }
 
     public function add()

@@ -20,6 +20,10 @@ class RecipesTable extends Table
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
         ]);
+
+        $this-> belongsToMany('Users', [
+            'through' => 'Favorites',
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator
