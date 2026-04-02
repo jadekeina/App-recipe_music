@@ -34,6 +34,10 @@
             $identity = $this->request->getAttribute('identity');
             ?>
 
+            <?php if ($this->request->getAttribute('identity')): ?>
+            <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index']) ?>
+            <?php endif; ?>
+
             <?php if ($identity) : ?>
 
                 <?php

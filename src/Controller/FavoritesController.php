@@ -32,10 +32,12 @@ class FavoritesController extends AppController
 
     public function index()
     {
-        $userId = $this->Authentication->getIdentity()->get('id');
+        $user = $this->Authentication->getIdentity();
+        
         $favorites = $this->Favorites->find()
-            ->where(['user_id' => $userId])
-            ->contain(['Recipes'])
+            // On précise "Favorites.user_id" pour lever l'ambiguïté
+            ->where(['Favorites.user_id' => $user->get('id')]) 
+            ->contain(['Recipes']) 
             ->all();
 
         $this->set(compact('favorites'));
