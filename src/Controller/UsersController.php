@@ -37,15 +37,12 @@ class UsersController extends AppController
 public function login()
 {
     $result = $this->Authentication->getResult();
-
     if ($result->isValid()) {
-        $user = $result->getData();
+        $user = $this->Authentication->getIdentity();
         
-        if (isset($user->role) && $user->role === 'admin') {
-            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index']);
-        }
-
-        return $this->redirect(['controller' => 'Home', 'action' => 'index']);
+        $target = $this->Authentication->getLoginRedirect() ?? ['controller' => 'Home'];
+        
+        return $this->redirect($target);
     }
 
     if ($this->request->is('post') && !$result->isValid()) {
