@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <?php
     // Génère automatiquement la balise <meta charset="utf-8">
     echo $this->Html->charset();
     ?>
 
-    <!-- Balise meta pour le responsive design sur mobile -->
+  
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <?php
@@ -26,16 +27,14 @@
     <header>
 
         <?php
-        // 1. On récupère les informations de la page actuelle
+
         $controller = $this->request->getParam('controller');
         $action = $this->request->getParam('action');
         $pass = $this->request->getParam('pass');
 
-        // 2. On définit les pages "interdites" de navigation
         $isHomePage = ($controller === 'Pages' && $action === 'display' && ($pass[0] ?? '') === 'home');
         $isAuthPage = ($controller === 'Users' && ($action === 'login' || $action === 'add'));
 
-        // 3. On affiche la NAV uniquement si on n'est NI sur la Home, NI sur Login, NI sur Register
         ?>
 
         <?php if (!$isHomePage && !$isAuthPage): ?>
@@ -99,6 +98,27 @@
     </main>
 
     <footer>
+
+<nav class="menu">
+    <?= $this->Html->link('<i class="fa-solid fa-house"></i>', ['controller' => 'Home', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
+    
+    <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller' => 'Recipes', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
+    
+    <?php 
+  
+    $user = $this->request->getAttribute('identity'); 
+    
+    if ($user): ?>
+        <?= $this->Html->link('<i class="fa-solid fa-heart"></i>', ['controller' => 'Favorites', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
+        
+        <?= $this->Html->link('<i class="fa-solid fa-circle-plus"></i>', ['controller' => 'Recipes', 'action' => 'add'], ['escape' => false, 'class' => 'menu-item add-btn']) ?>
+        
+        <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller' => 'Users', 'action' => 'view', $user->get('id')], ['escape' => false, 'class' => 'menu-item']) ?>
+    <?php else: ?>
+        <?= $this->Html->link('<i class="fa-solid fa-user-lock"></i>', ['controller' => 'Users', 'action' => 'login'], ['escape' => false, 'class' => 'menu-item']) ?>
+    <?php endif; ?>
+</nav>
+
     </footer>
 
     <?php
