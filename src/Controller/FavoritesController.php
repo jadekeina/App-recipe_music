@@ -23,7 +23,11 @@ class FavoritesController extends AppController
             $this->Flash->success('Ajouté aux favoris !');
         }
 
-        return $this->redirect($this->referer());
+        return $this->redirect($this->referer([
+            'controller' => 'Recipes',
+            'action' => 'view',
+            $recipeId
+        ]));
     }
 
     public function index()

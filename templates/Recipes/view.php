@@ -5,13 +5,11 @@ $this->assign('title', h($recipe->title));
 
 <h1><?= h($recipe->title) ?></h1>
 
-<div class="actions">
-    <?= $this->Form->postLink(
-        'Ajouter/Retirer des favoris',
-        ['controller' => 'Favorites', 'action' => 'toggle', $recipe->id],
-        ['class' => 'button', 'confirm' => 'Modifier vos favoris ?']
-    ) ?>
-</div>
+<?php
+
+$identity = $this->request->getAttribute('identity');
+if ($identity) :
+?>
 
 <div class="favorite-section">
     <?= $this->Form->postLink(
@@ -24,6 +22,20 @@ $this->assign('title', h($recipe->title));
         ]
     ) ?>
 </div>
+
+<?php else : ?>
+    <p>
+        <?= $this->Html->link(
+            'Connectez-vous',
+            [
+                'controller' => 'Users',
+                'action' => 'login',
+                '?' => ['redirect' => $this->request->getRequestTarget()]
+            ]
+        ) ?>
+        pour ajouter cette recette à vos favoris.
+    </p>
+<?php endif; ?>
 
 
 <p>Ajoutée par : <?= $recipe->has('user') ? h($recipe->user->username) : 'Anonyme' ?></p>
