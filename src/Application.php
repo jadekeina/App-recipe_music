@@ -145,7 +145,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $service = new AuthenticationService();
 
         $service->setConfig([
-            'unauthenticatedRedirect' => '/letuscook/users/login',
+           'unauthenticatedRedirect' => '/letuscook/users/login',
             'queryParam' => 'redirect',
         ]);
 

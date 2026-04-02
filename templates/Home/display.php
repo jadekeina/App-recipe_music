@@ -1,5 +1,4 @@
 <?php
-// On définit le titre de la page d'accueil
 $this->assign('title', 'Accueil');
 ?>
 

@@ -26,7 +26,7 @@
     <header>
 
         <?php
-        echo $this->Html->link('Let Us Cook', ['controller' => 'Home', 'action' => 'display']);
+        //echo $this->Html->link('Let Us Cook', ['controller' => 'Home', 'action' => 'display']);
         ?>
 
         <nav>
@@ -38,22 +38,22 @@
 
                 <?php
                 // ✅ Espace ajouté après "Bonjour,"
-                echo 'Bonjour, ' . h($identity->username);
+                //echo 'Bonjour, ' . h($identity->username);
                 ?>
 
                 <?php
                 // ✅ Lien de déconnexion ajouté
-                echo $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout']);
+                //echo $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout']);
                 ?>
 
             <?php else : ?>
 
                 <?php
-                echo $this->Html->link('Se connecter', ['controller' => 'Users', 'action' => 'login']);
+                //echo $this->Html->link('Se connecter', ['controller' => 'Users', 'action' => 'login']);
                 ?>
 
                 <?php
-                echo $this->Html->link('S\'inscrire', ['controller' => 'Users', 'action' => 'register']);
+                //echo $this->Html->link('S\'inscrire', ['controller' => 'Users', 'action' => 'register']);
                 ?>
 
             <?php endif; ?>
