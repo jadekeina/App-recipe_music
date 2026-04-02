@@ -1,36 +1,40 @@
-<h1>Inscription</h1>
+<div class="signup-container">
+    <div class="signup-header">
 
-<?php
+                <div class="logo-container">
+             <?= $this->Html->image('logo.png', ['alt' => 'Let Me Cook', 'class' => 'main-logo']) ?>
+                </div>
+    </div>
 
-echo $this->Form->create($user);
-?>
+    <div class="form-card">
 
-    <?php
+    <div class="form-perso-title"> 
+                        <div class="logo-container"> <?= $this->Html->image('perso.png', ['alt' => 'Let Me Cook', 'class' => 'perso-logo']) ?>
+                </div>
 
-    echo $this->Form->control('username', [
-        'label' => 'Nom d\'utilisateur',
-    ]);
-    ?>
+        <div class="form-title"> <h2>S'inscrire</h2> </div>
 
-    <?php
+    </div>
 
-    echo $this->Form->control('password', [
-        'label' => 'Mot de passe',
-        'type' => 'password',
-    ]);
-    ?>
-
-    <?php
-
-    echo $this->Form->button('S\'inscrire');
-    ?>
-
-<?php
-
-echo $this->Form->end();
-?>
-
-<p>
-    Déjà un compte ?
-    <?= $this->Html->link('Se connecter', ['action' => 'login']) ?>
-</p>
+        <?= $this->Form->create($user) ?>
+            <?= $this->Form->control('username', ['label' => 'Nom d\'utilisateur', 'placeholder' => 'Username']) ?>
+            
+            <?= $this->Form->control('nom', ['label' => 'Nom', 'placeholder' => 'Nom']) ?>
+            <?= $this->Form->control('prenom', ['label' => 'Prénom', 'placeholder' => 'Prénom']) ?>
+            <?= $this->Form->control('email', ['label' => 'Adresse mail', 'placeholder' => 'Mail']) ?>
+            
+            <?= $this->Form->control('password', ['label' => 'Mot de passe', 'placeholder' => 'Créez un mot de passe']) ?>
+            
+            <div class="form-footer">
+                <?= $this->Form->button(__('S\'inscrire'), ['class' => 'btn-confirm']) ?>
+            </div>
+        <?= $this->Form->end() ?>
+        
+        <p class="form-link">
+            Déjà un compte ? <?= $this->Html->link('Se connecter', [
+        'prefix' => false,    
+        'controller' => 'Users', 
+        'action' => 'login'
+    ]) ?>
+    </div>
+</div>

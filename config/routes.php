@@ -57,12 +57,17 @@ return function (RouteBuilder $routes): void {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Home', 'action' => 'display', 'home']);
+
+        //Notre page d'accueil 
+        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+
+        //Autres pages
+
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
          */
-        $builder->connect('/pages/*', 'Pages::display');
+        //$builder->connect('/pages/*', 'Pages::display');
 
         /*
          * Connect catchall routes for all controllers.

@@ -11,11 +11,19 @@ class User extends Entity
 
         'username' => true,
 
+        'nom' => true, 
+
+        'prenom' => true,   
+
+        'email' => true,
+
         'password' => true,
 
         'created' => true,
 
         'modified' => true,
+
+        '*' => false,
     ];
 
     protected $_hidden = [

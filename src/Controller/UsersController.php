@@ -14,6 +14,8 @@ class UsersController extends AppController
 
     public function register()
     {
+        $result = $this->Authentication->getResult();
+
         $user = $this->Users->newEmptyEntity();
 
         if ($this->request->is('post')) {
@@ -32,22 +34,24 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    public function login()
-    {
-        $result = $this->Authentication->getResult();
+public function login()
+{
+    $result = $this->Authentication->getResult();
 
-        if ($result->isValid()) {
-
-            $redirect = $this->request->getQuery('redirect', ['controller' => 'Home', 'action' => 'index']);
-
-            return $this->redirect($redirect);
+    if ($result->isValid()) {
+        $user = $result->getData();
+        
+        if (isset($user->role) && $user->role === 'admin') {
+            return $this->redirect(['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index']);
         }
 
-        if ($this->request->is('post') && !$result->isValid()) {
-
-            $this->Flash->error('Nom ou mot de passe incorrect');
-        }
+        return $this->redirect(['controller' => 'Home', 'action' => 'index']);
     }
+
+    if ($this->request->is('post') && !$result->isValid()) {
+        $this->Flash->error('Nom ou mot de passe incorrect');
+    }
+}
 
     public function logout()
     {

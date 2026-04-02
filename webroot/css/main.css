@@ -1,0 +1,166 @@
+:root {
+    --main-blue: #1B54D6;
+    --main-yellow: #FFCE00;
+    --bg-cream: #F4E8B1;
+    --white: #FFFFFF;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend', sans-serif;
+    height: 100%;
+}
+
+.welcome-screen {
+    background-color: var(--main-blue);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.welcome-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+}
+
+.main-logo {
+    width: 280px;
+    margin-bottom: 2rem;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    color: var(--bg-cream);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn {
+    padding: 12px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    min-width: 200px;
+}
+
+.btn-primary {
+    border: 1px solid var(--bg-cream);
+    color: var(--bg-cream);
+}
+
+.btn-primary:hover {
+    background-color: var(--bg-cream);
+    color: var(--main-blue);
+}
+
+.btn-outline {
+    color: var(--main-blue);
+    background-color: var(--bg-cream);
+}
+
+.btn-outline:hover {
+    background-color: #CBC08D;
+}
+
+.logo_container {
+    margin-bottom: 2rem;
+}
+
+.signup-container {
+    background-color: var(--main-blue);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.signup-header {
+    padding: 60px;
+    text-align: center;
+}
+
+
+.form-card {
+    background-color: #ffffff; 
+    width: 100%;
+    border-radius: 60px 60px 0 0;
+    padding: 30px 20px;
+    flex-grow: 1;
+    position: relative;
+    overflow: visible;
+}
+
+.form-card-login {
+    background-color: #ffffff; 
+    width: 100%;
+    border-radius: 60px 60px 0 0;
+    padding: 30px 20px;
+    flex-grow: 1;
+    position: relative;
+    overflow: visible;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 8px;
+    background: #EBEBEB;
+    box-shadow: 5px 2px 2px #a19e9e; 
+}
+
+.form-card-login input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: none;
+    border-radius: 8px;
+    background: #EBEBEB;
+    box-shadow: 5px 2px 2px #a19e9e; 
+}
+
+.btn-confirm {
+    background: transparent;
+    border: none;
+    color: #fff;
+    background-color: var(--main-blue);
+    padding: 10px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.perso-logo{
+    position: absolute;
+    top: -100px;  
+    left: 40px;  
+    width: 150px; 
+    z-index: 10;
+}
+
+.perso-login{
+
+    width: 200px; 
+}
+
+.form-title {
+    text-align: center;
+    margin-top: 20px; 
+
+}

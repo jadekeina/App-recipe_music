@@ -30,6 +30,14 @@ class UsersTable extends Table{
             ->maxLength('password', 100)
             ->allowEmptyString('password');
 
+        $validator
+        ->email('email') 
+        ->notEmptyString('email', 'L\'adresse mail est obligatoire');
+
+        $validator
+        ->notEmptyString('nom', 'Le nom est obligatoire')
+        ->notEmptyString('prenom', 'Le prénom est obligatoire');
+
         return $validator;
     }
 

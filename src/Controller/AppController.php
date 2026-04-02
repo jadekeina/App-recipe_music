@@ -37,6 +37,15 @@ class AppController extends Controller
      *
      * @return void
      */
+
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+{
+    parent::beforeFilter($event);
+
+    if ($this->request->getParam('prefix') === 'Admin') {
+    }
+}
+
     public function initialize(): void
     {
         parent::initialize();
