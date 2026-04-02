@@ -19,6 +19,10 @@ echo $this->Form->create($recipe);
 
     <?php
 
+    echo $this->Form->control('image', ['type' => 'file', 'label' => 'Photo de la recette']);
+    ?>
+
+  <?php
     echo $this->Form->control('ingredients', [
         'label' => 'Ingrédients',
         'type' => 'textarea',

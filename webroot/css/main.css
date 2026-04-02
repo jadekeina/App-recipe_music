@@ -164,3 +164,119 @@ body, html {
     margin-top: 20px; 
 
 }
+
+.page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Georgia, serif;
+    background: #faf9f7;
+}
+
+.titre {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+}
+
+.grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.carte {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.img-box {
+    position: relative;
+}
+
+.photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.tag {
+    position: absolute;
+    top: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.temps {
+    left: 10px;
+    background: #fff;
+    color: #333;
+}
+
+.regime {
+    right: 10px;
+    background: #d4f5c4;
+    color: #2d7a00;
+}
+
+.likes {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #e05;
+}
+
+.infos {
+    padding: 10px 12px 14px;
+}
+
+.nom {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a1a1a;
+    margin: 0 0 8px;
+}
+
+.auteur {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+}
+
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.bas-page {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn-deco {
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-deco:hover {
+    text-decoration: underline;
+}
