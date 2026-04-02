@@ -26,17 +26,24 @@
     <header>
 
         <?php
-        //echo $this->Html->link('Let Us Cook', ['controller' => 'Home', 'action' => 'display']);
+        // 1. On récupère les informations de la page actuelle
+        $controller = $this->request->getParam('controller');
+        $action = $this->request->getParam('action');
+        $pass = $this->request->getParam('pass');
+
+        // 2. On définit les pages "interdites" de navigation
+        $isHomePage = ($controller === 'Pages' && $action === 'display' && ($pass[0] ?? '') === 'home');
+        $isAuthPage = ($controller === 'Users' && ($action === 'login' || $action === 'add'));
+
+        // 3. On affiche la NAV uniquement si on n'est NI sur la Home, NI sur Login, NI sur Register
         ?>
+
+        <?php if (!$isHomePage && !$isAuthPage): ?>
 
         <nav>
             <?php
             $identity = $this->request->getAttribute('identity');
             ?>
-
-            <?php if ($this->request->getAttribute('identity')): ?>
-            <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index']) ?>
-            <?php endif; ?>
 
             <?php if ($identity) : ?>
 
@@ -62,7 +69,21 @@
 
             <?php endif; ?>
 
+            <div class="top-nav-title">
+                <a href="<?= $this->Url->build('/home') ?>"><span>Let's</span>Cook</a>
+            </div>
+            <div class="top-nav-links">
+                <?= $this->Html->link('Accueil', '/home') ?>
+                
+                <?= $this->Html->link('Recettes', ['controller' => 'Recipes', 'action' => 'index']) ?>
+                
+                <?php if ($this->request->getAttribute('identity')): ?>
+                    <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index']) ?>
+                <?php endif; ?>
+            </div>
         </nav>
+
+        <?php endif; ?>
     </header>
 
     <?php
