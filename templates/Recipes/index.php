@@ -43,7 +43,9 @@ else :
 
             <p>Durée : <?= h($recipe->duration) ?> minutes</p>
 
-            <p>Ajoutée par : <?= h($recipe->user->username) ?></p>
+            <td>
+                <?= $recipe->has('user') ? h($recipe->user->username) : '<span class="badge">Anonyme</span>' ?>
+            </td>
 
         </div>
     <?php endforeach; ?>
