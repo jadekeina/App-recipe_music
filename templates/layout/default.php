@@ -113,7 +113,7 @@
         
         <?= $this->Html->link('<i class="fa-solid fa-circle-plus"></i>', ['controller' => 'Recipes', 'action' => 'add'], ['escape' => false, 'class' => 'menu-item add-btn']) ?>
         
-        <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller' => 'Users', 'action' => 'view', $user->get('id')], ['escape' => false, 'class' => 'menu-item']) ?>
+        <?= $this->Html->link('<i class="fa-solid fa-user"></i>', ['controller' => 'Users', 'action' => 'profile', $user->get('id')], ['escape' => false, 'class' => 'menu-item']) ?>
     <?php else: ?>
         <?= $this->Html->link('<i class="fa-solid fa-user-lock"></i>', ['controller' => 'Users', 'action' => 'login'], ['escape' => false, 'class' => 'menu-item']) ?>
     <?php endif; ?>

@@ -21,6 +21,10 @@ class UsersTable extends Table{
         $this->belongsToMany('Recipes', [
             'through' => 'Favorites',
         ]);
+
+        $this->hasMany('Favorites', [
+        'foreignKey' => 'user_id',
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator

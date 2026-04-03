@@ -43,11 +43,4 @@
             </div>
         <?php endforeach; ?>
     </div>
-
-    <div class="bas-page">
-        <?= $this->Html->link('Se déconnecter',
-            ['controller' => 'Users', 'action' => 'logout'],
-            ['class' => 'btn-deco']
-        ) ?>
-    </div>
 </div>
