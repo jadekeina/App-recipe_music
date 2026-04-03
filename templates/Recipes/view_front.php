@@ -2,7 +2,11 @@
     <div class="view-header">
         <?= $this->Html->link('<i class="fa-solid fa-chevron-left"></i>', ['controller' => 'Home', 'action' => 'index'], ['escape' => false, 'class' => 'back-btn']) ?>
         <div class="header-right">
-            <i class="fa-<?= $isFavorite ? 'solid' : 'regular' ?> fa-heart blue-icon"></i>
+            <?= $this->Form->postLink(
+        '<i class="fa-' . ($isFavorite ? 'solid' : 'regular') . ' fa-heart"></i>',
+        ['controller' => 'Favorites', 'action' => 'toggle', $recipe->id],
+        ['escape' => false, 'class' => $isFavorite ? 'active-fav' : '']
+    ) ?>
         </div>
     </div>
 
