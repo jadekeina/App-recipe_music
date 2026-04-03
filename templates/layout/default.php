@@ -15,11 +15,10 @@
     echo $this->Html->tag('title', $this->fetch('title') ?? 'Let Us Cook');
     ?>
 
-    <?php
+    
 
-    echo $this->Html->css('main');
-    ?>
-
+    <?= $this->Html->css('main') ?>
+<?= $this->fetch('css') ?>
 </head>
 
 <body>
