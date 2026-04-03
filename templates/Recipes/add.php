@@ -43,7 +43,7 @@ $isAdmin = ($identity && $identity->get('role') === 'admin');
     <?= $this->Form->end() ?>
 
     <div class="grille">
-            <?php if ($pending->isEmpty()): ?>
+            <?php if (empty($pending)): ?>
                 <p>Aucune recette à valider pour le moment.</p>
             <?php else: ?>
                 <?php foreach ($pending as $p): ?>
