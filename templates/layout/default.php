@@ -39,7 +39,7 @@
 
         <?php if (!$isHomePage && !$isAuthPage): ?>
 
-        <nav>
+        <!-- <nav>
             <?php
             $identity = $this->request->getAttribute('identity');
             ?>
@@ -80,7 +80,7 @@
                     <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index']) ?>
                 <?php endif; ?>
             </div>
-        </nav>
+        </nav> -->
 
         <?php endif; ?>
     </header>
