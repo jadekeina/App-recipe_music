@@ -1,14 +1,15 @@
 :root {
-    --main-blue: #1B54D6;
-    --main-yellow: #FFCE00;
-    --bg-cream: #F4E8B1;
-    --white: #FFFFFF;
+    --main-blue: #1b54d6;
+    --main-yellow: #ffce00;
+    --bg-cream: #f4e8b1;
+    --white: #ffffff;
 }
 
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
-    font-family: 'Lexend', sans-serif;
+    font-family: "Lexend", sans-serif;
     height: 100%;
 }
 
@@ -71,7 +72,7 @@ body, html {
 }
 
 .btn-outline:hover {
-    background-color: #CBC08D;
+    background-color: #cbc08d;
 }
 
 .logo_container {
@@ -92,9 +93,8 @@ body, html {
     text-align: center;
 }
 
-
 .form-card {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     width: 100%;
     border-radius: 60px 60px 0 0;
     padding: 30px 20px;
@@ -104,7 +104,7 @@ body, html {
 }
 
 .form-card-login {
-    background-color: #ffffff; 
+    background-color: #ffffff;
     width: 100%;
     border-radius: 60px 60px 0 0;
     padding: 30px 20px;
@@ -119,8 +119,8 @@ body, html {
     margin: 10px 0 20px 0;
     border: none;
     border-radius: 8px;
-    background: #EBEBEB;
-    box-shadow: 5px 2px 2px #a19e9e; 
+    background: #ebebeb;
+    box-shadow: 5px 2px 2px #a19e9e;
 }
 
 .form-card-login input {
@@ -129,8 +129,8 @@ body, html {
     margin: 10px 0 20px 0;
     border: none;
     border-radius: 8px;
-    background: #EBEBEB;
-    box-shadow: 5px 2px 2px #a19e9e; 
+    background: #ebebeb;
+    box-shadow: 5px 2px 2px #a19e9e;
 }
 
 .btn-confirm {
@@ -145,24 +145,21 @@ body, html {
     margin: 0 auto;
 }
 
-
-.perso-logo{
+.perso-logo {
     position: absolute;
-    top: -100px;  
-    left: 40px;  
-    width: 150px; 
+    top: -100px;
+    left: 40px;
+    width: 150px;
     z-index: 10;
 }
 
-.perso-login{
-
-    width: 200px; 
+.perso-login {
+    width: 200px;
 }
 
 .form-title {
     text-align: center;
-    margin-top: 20px; 
-
+    margin-top: 20px;
 }
 
 .page {
@@ -190,7 +187,7 @@ body, html {
     background: #fff;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .img-box {
@@ -229,7 +226,7 @@ body, html {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 20px;
     padding: 4px 10px;
     font-size: 13px;
@@ -280,3 +277,98 @@ body, html {
 .btn-deco:hover {
     text-decoration: underline;
 }
+
+.menu {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    border-radius: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.menu-item {
+    color: #4a69ff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    transform: scale(1.1);
+}
+
+body {
+    padding-bottom: 100px;
+}
+
+.spotify-hero {
+    margin-top: 20px;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.recipe-card-black {
+    background: #000;
+    color: #fff;
+    border-radius: 30px 30px 0 0;
+    padding: 20px;
+    margin-top: -20px; 
+    min-height: 500px;
+}
+
+.pull-bar {
+    width: 40px;
+    height: 4px;
+    background: #333;
+    margin: 0 auto 20px;
+    border-radius: 2px;
+}
+
+.btn-play {
+    background: #2D5BFF;
+    color: white;
+    border: none;
+    padding: 17px 40px;
+    border-radius: 10px;
+    font-weight: bold;
+    width: 270px;
+    align-items: center;
+}
+
+.img-playlist{
+    width: 15rem;
+    height: 15rem;
+    background-color: #a19e9e;
+    border-radius:10% ;
+}
+
+.playlist-name{
+    margin-top :3px;
+    margin-bottom: 3px;
+}
+
+.playlist-meta{
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spotify-player{
+    align-items: center;
+}
+
+

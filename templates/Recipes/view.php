@@ -17,7 +17,7 @@ if ($identity) :
         ['controller' => 'Favorites', 'action' => 'toggle', $recipe->id],
         [
             'class' => 'btn-favorite',
-            // Optionnel : affiche une petite boîte de dialogue de confirmation
+           
             'confirm' => $isFavorite ? 'Voulez-vous retirer cette recette de vos favoris ?' : null 
         ]
     ) ?>
