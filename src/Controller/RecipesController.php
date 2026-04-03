@@ -57,26 +57,56 @@ class RecipesController extends AppController
     return $this->render('view_front');
     }
 
-    public function add()
-    {
-        $recipe = $this->Recipes->newEmptyEntity();
-        if ($this->request->is('post')) {
-            // On récupère les données du formulaire
-            $data = $this->request->getData();
-            
-            // On AJOUTE l'ID de l'utilisateur directement dans le tableau de données
-            // avant même de créer l'entité. C'est la méthode la plus sûre.
-            $data['user_id'] = $this->Authentication->getIdentity()->get('id');
+public function add()
+{
+    $recipe = $this->Recipes->newEmptyEntity();
+    $identity = $this->Authentication->getIdentity();
 
-            $recipe = $this->Recipes->patchEntity($recipe, $data);
-
-            if ($this->Recipes->save($recipe)) {
-                $this->Flash->success(__('La recette a été sauvegardée.'));
-                return $this->redirect(['action' => 'index']);
-            }
-            // Si ça échoue, on regarde pourquoi (affiche les erreurs de validation)
-            $this->Flash->error(__('Erreur : ' . json_encode($recipe->getErrors())));
+    if ($this->request->is('post')) {
+        $data = $this->request->getData();
+        $data['user_id'] = $identity->get('id');
+        
+        if ($identity->get('role') === 'admin' && isset($data['is_published'])) {
+            $data['is_published'] = $data['is_published'];
+        } else {
+            $data['is_published'] = 0;
         }
-        $this->set(compact('recipe'));
+
+        $recipe = $this->Recipes->patchEntity($recipe, $data);
+        if ($this->Recipes->save($recipe)) {
+            $this->Flash->success(__('Opération réussie.'));
+            return $this->redirect(['action' => 'add']); 
+        }
     }
+
+    $pending = [];
+    if ($identity->get('role') === 'admin') {
+        $pending = $this->Recipes->find()
+            ->where(['is_published' => 0])
+            ->contain(['Users'])
+            ->all();
+    }
+
+    $this->set(compact('recipe', 'pending'));
+}
+
+public function publish($id = null)
+{
+    $this->request->allowMethod(['post']);
+
+    $recipe = $this->Recipes->get($id);
+
+    $recipe->is_published = 1;
+
+    if ($this->Recipes->save($recipe)) {
+        $this->Flash->success(__('La recette a été validée et est maintenant en ligne !'));
+    } else {
+        $this->Flash->error(__('Impossible de valider la recette.'));
+    }
+
+
+    return $this->redirect(['action' => 'add']);
+}
+
+
 }

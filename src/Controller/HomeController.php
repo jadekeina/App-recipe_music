@@ -6,7 +6,11 @@ class HomeController extends AppController{
     public function index()
     {
     $this->loadModel('Recipes'); 
-    $recipes = $this->Recipes->find()->contain(['Users'])->all();
+   $recipes = $this->Recipes->find()
+        ->where(['Recipes.is_published' => 1]) 
+        ->contain(['Users'])
+        ->order(['Recipes.created' => 'DESC'])
+        ->all();
     $this->set(compact('recipes'));
     }
 
