@@ -101,7 +101,7 @@
 <nav class="menu">
     <?= $this->Html->link('<i class="fa-solid fa-house"></i>', ['controller' => 'Home', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
     
-   //<?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller' => 'Recipes', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
+   <?= $this->Html->link('<i class="fa-solid fa-magnifying-glass"></i>', ['controller' => 'Recipes', 'action' => 'index'], ['escape' => false, 'class' => 'menu-item']) ?>
     
     <?php 
   
