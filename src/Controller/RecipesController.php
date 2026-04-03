@@ -16,9 +16,22 @@ class RecipesController extends AppController
 
     public function index()
     {
-        $recipes = $this->Recipes->find('all')->contain(['Users']);
+        $search = $this->request->getQuery('q');
 
-        $this->set(compact('recipes'));
+        $query = $this->Recipes->find('all')->contain(['Users']);
+
+        if (!empty($search)) {
+            $query = $query->where([
+                'OR' => [
+                    'Recipes.title LIKE' => '%' . $search . '%',
+                    'Recipes.ingredients LIKE' => '%' . $search . '%',
+                ]
+            ]);
+        }
+
+        $recipes = $query->all();
+
+        $this->set(compact('recipes', 'search'));
     }
 
     public function view($id = null)
