@@ -1,14 +1,12 @@
 <div class="app-container">
     <div class="view-header">
         <?= $this->Html->link('<i class="fa-solid fa-chevron-left"></i>', ['controller' => 'Home', 'action' => 'index'], ['escape' => false, 'class' => 'back-btn']) ?>
-        <div class="header-right">
-            <i class="fa-<?= (isset($isFavorite) && $isFavorite) ? 'solid' : 'regular' ?> fa-heart blue-icon"></i>
-        </div>
     </div>
 
     <div class="spotify-hero">
 
-    <div class="img-playlist"> </div>
+  
+<?= $this->Html->image('playlist.webp', ['class' => 'img-playlist', 'alt' => 'Image de la playlist']) ?>
 
 <?php if (!empty($recipe->spotify_playlist_id)): ?>
     <?php 
@@ -46,10 +44,26 @@
             </div>
         </div>
 
-        <div class="recipe-details">
+<div class="recipe-details">
+            <h3 class="section-title">Ingrédients</h3>
+            
             <ul class="ingredients-list">
-                <li><?= nl2br(h($recipe->ingredients)) ?></li>
+                <?php 
+                $lignes = explode("\n", $recipe->ingredients);
+                foreach ($lignes as $ligne): 
+                    if (trim($ligne) !== ''): 
+                ?>
+                    <li><?= h(trim($ligne, "-* ")) ?></li>
+                <?php 
+                    endif;
+                endforeach; 
+                ?>
             </ul>
+
+            <h3 class="section-title">Étapes de préparation</h3>
+            <div class="steps-content">
+                <?= nl2br(h($recipe->steps)) ?>
+            </div>
         </div>
         
 
