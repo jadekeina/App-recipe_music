@@ -5,6 +5,27 @@ $this->assign('title', 'Les recettes');
 
 <h1>Les recettes</h1>
 
+<?= $this->Form->create(null, [
+    'type' => 'get',                                 
+    'url' => ['controller' => 'Recipes', 'action' => 'index']
+]) ?>
+
+    <?= $this->Form->control('q', [
+        'label'       => false,                         
+        'placeholder' => 'Rechercher une recette...',   
+        'value'       => $search ?? '',
+        'type'        => 'search',
+    ]) ?>
+
+    <?= $this->Form->button('Rechercher') ?>
+
+<?= $this->Form->end() ?>
+
+<?php if (!empty($search)) : ?>
+    <p>Résultats pour : <strong><?= h($search) ?></strong></p>
+    <?= $this->Html->link('Effacer la recherche', ['action' => 'index']) ?>
+<?php endif; ?>
+
 <?php
 
 $identity = $this->request->getAttribute('identity');
