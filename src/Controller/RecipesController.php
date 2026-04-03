@@ -56,21 +56,23 @@ class RecipesController extends AppController
     public function add()
     {
         $recipe = $this->Recipes->newEmptyEntity();
-        
         if ($this->request->is('post')) {
-            $recipe = $this->Recipes->patchEntity($recipe, $this->request->getData());
+            // On récupère les données du formulaire
+            $data = $this->request->getData();
+            
+            // On AJOUTE l'ID de l'utilisateur directement dans le tableau de données
+            // avant même de créer l'entité. C'est la méthode la plus sûre.
+            $data['user_id'] = $this->Authentication->getIdentity()->get('id');
 
-            $recipe->user_id = $this->Authentication->getIdentity()->get('id');
+            $recipe = $this->Recipes->patchEntity($recipe, $data);
 
             if ($this->Recipes->save($recipe)) {
-                $this->Flash->success('Recette ajoutée !');
-
+                $this->Flash->success(__('La recette a été sauvegardée.'));
                 return $this->redirect(['action' => 'index']);
             }
-
-            $this->Flash->error('Une erreur est survenue, veuillez réessayer.');
+            // Si ça échoue, on regarde pourquoi (affiche les erreurs de validation)
+            $this->Flash->error(__('Erreur : ' . json_encode($recipe->getErrors())));
         }
-
         $this->set(compact('recipe'));
     }
 }

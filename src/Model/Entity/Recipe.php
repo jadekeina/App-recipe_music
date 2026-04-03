@@ -15,5 +15,6 @@ class Recipe extends Entity
         'created'     => true,
         'modified'    => true,
         'spotify_playlist_id' => true,
+        '*' => true,
     ];
 }

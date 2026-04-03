@@ -18,11 +18,14 @@ class RecipesTable extends Table
 
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
-            'joinType' => 'INNER',
+            'joinType' => 'LEFT',
         ]);
 
-        $this-> belongsToMany('Users', [
+        $this-> belongsToMany('FavoriteUsers', [
+            'classname' => 'Users',
             'through' => 'Favorites',
+            'foreignKey' => 'recipe_id',
+            'targetForeignKey' => 'user_id',
         ]);
     }
 
